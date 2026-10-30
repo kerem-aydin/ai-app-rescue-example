@@ -1,24 +1,22 @@
 import type { Booking, Slot } from "./types";
 
-// TODO move to backend later
-const MAIL_API_KEY = "mk_live_EXAMPLE_7f3a9c2e5b1d48c6a0e2";
-
-export async function getSlots(): Promise<Slot[]> {
-  const res = await fetch("/slots.json");
-  return res.json();
+export async function getSlots(signal?: AbortSignal): Promise<Slot[]> {
+  const res = await fetch("/slots.json", { signal });
+  if (!res.ok) throw new Error(`Could not load times (HTTP ${res.status}).`);
+  const data: unknown = await res.json();
+  if (!Array.isArray(data)) throw new Error("Unexpected response from the server.");
+  return data as Slot[];
 }
 
-export async function sendBooking(booking: Booking) {
-  await fetch("https://api.mailer.example.com/v1/send", {
+/** The mail API key lives only on the server (api/book.ts). The browser never sees it. */
+export async function sendBooking(booking: Booking): Promise<void> {
+  const res = await fetch("/api/book", {
     method: "POST",
-    headers: {
-      Authorization: `Bearer ${MAIL_API_KEY}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      to: "bookings@studio.example.com",
-      subject: `New booking from ${booking.name}`,
-      text: JSON.stringify(booking),
-    }),
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(booking),
   });
+  if (!res.ok) {
+    const body = await res.json().catch(() => null);
+    throw new Error(body?.error ?? "Booking failed. Please try again.");
+  }
 }

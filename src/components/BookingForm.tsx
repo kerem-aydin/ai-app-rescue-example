@@ -1,26 +1,71 @@
 import { useState } from "react";
 import { sendBooking } from "../api";
+import { validateBooking, type BookingErrors } from "../lib/validate";
+
+type Status = "idle" | "sending" | "done" | "failed";
 
 export function BookingForm({ slotId }: { slotId: string | null }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [note, setNote] = useState("");
+  const [errors, setErrors] = useState<BookingErrors>({});
+  const [status, setStatus] = useState<Status>("idle");
+  const [serverError, setServerError] = useState("");
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
-    await sendBooking({ slotId: slotId ?? "", name, email, note });
-    alert("Booked! See you soon.");
+    if (status === "sending") return;
+    const booking = { slotId: slotId ?? "", name, email, note };
+    const found = validateBooking(booking);
+    setErrors(found);
+    if (Object.keys(found).length > 0) return;
+
+    setStatus("sending");
+    setServerError("");
+    try {
+      await sendBooking(booking);
+      setStatus("done");
+    } catch (err) {
+      setServerError(err instanceof Error ? err.message : "Booking failed. Please try again.");
+      setStatus("failed");
+    }
+  }
+
+  if (status === "done") {
+    return (
+      <div className="form form--done" role="status">
+        <h2>You are booked in</h2>
+        <p>We sent a confirmation to {email.trim()}.</p>
+      </div>
+    );
   }
 
   return (
-    <form className="form" onSubmit={submit}>
+    <form className="form" onSubmit={submit} noValidate>
       <h2>Your details</h2>
+      {errors.slotId && <p className="field__error" role="alert">{errors.slotId}</p>}
       <div className="form__row">
-        <input placeholder="Full name" value={name} onChange={(e) => setName(e.target.value)} />
-        <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <label className="field">
+          <span>Full name</span>
+          <input name="name" autoComplete="name" value={name} onChange={(e) => setName(e.target.value)}
+            aria-invalid={!!errors.name} aria-describedby={errors.name ? "name-error" : undefined} />
+          {errors.name && <span id="name-error" className="field__error" role="alert">{errors.name}</span>}
+        </label>
+        <label className="field">
+          <span>Email</span>
+          <input name="email" type="email" autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)}
+            aria-invalid={!!errors.email} aria-describedby={errors.email ? "email-error" : undefined} />
+          {errors.email && <span id="email-error" className="field__error" role="alert">{errors.email}</span>}
+        </label>
       </div>
-      <textarea placeholder="Anything we should know?" value={note} onChange={(e) => setNote(e.target.value)} />
-      <button className="cta">Confirm booking</button>
+      <label className="field">
+        <span>Anything we should know? <em>(optional)</em></span>
+        <textarea name="note" value={note} onChange={(e) => setNote(e.target.value)} maxLength={500} />
+      </label>
+      {serverError && <p className="form__fail" role="alert">{serverError}</p>}
+      <button type="submit" className="cta" disabled={status === "sending"}>
+        {status === "sending" ? "Booking..." : "Confirm booking"}
+      </button>
     </form>
   );
 }

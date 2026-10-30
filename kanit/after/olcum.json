@@ -1,0 +1,28 @@
+{
+  "phone": {
+    "viewport": 390,
+    "scrollWidth": 390,
+    "overflowPx": 0
+  },
+  "emptySubmit": {
+    "requestsSent": 0,
+    "outgoing": [],
+    "dialogs": [],
+    "visibleErrors": [
+      "Pick a time slot first.",
+      "Please enter your name.",
+      "Please enter your email."
+    ]
+  },
+  "slotsError": {
+    "pageErrors": [],
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 500 (Internal Server Error)"
+    ],
+    "alertText": [
+      "Could not load times (HTTP 500).Try again"
+    ],
+    "slotCards": 0
+  },
+  "loadingStateShown": true
+}
