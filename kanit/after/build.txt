@@ -8,8 +8,8 @@ transforming...
 rendering chunks...
 computing gzip size...
 dist/index.html                   0.62 kB │ gzip:  0.39 kB
-dist/assets/index-DMIZDZLu.css    2.68 kB │ gzip:  1.09 kB
-dist/assets/index-DNZeXF_C.js   147.87 kB │ gzip: 47.79 kB
-✓ built in 567ms
+dist/assets/index-B-uRS7cQ.css    2.74 kB │ gzip:  1.10 kB
+dist/assets/index-DM90LzsN.js   148.09 kB │ gzip: 47.87 kB
+✓ built in 571ms
 Secret scan passed: 3 files in dist/, no keys found.
 exit code: 0

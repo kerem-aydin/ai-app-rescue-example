@@ -42,7 +42,8 @@ saved in `kanit/before/` and `kanit/after/`.
 4. **No loading or error states.** The list was empty while loading and stayed empty if the request failed.
    Added a loading skeleton (same size as the cards, so the page no longer jumps: layout shift 0.229 → 0),
    an error message with "Try again", an empty-week message and a "Fully booked" state for full slots.
-   A failed booking now shows the server's message instead of a false "Booked!".
+   A failed booking now shows the server's message instead of a false "Booked!", and a successful one
+   confirms the service, day and time that were booked.
 
 5. **Layout broke on phones.** Fixed widths (`width: 1180px`, `repeat(3, 360px)`, `420px` inputs) and
    `white-space: nowrap` on the title. Replaced with a fluid container and auto-fitting grids; tested at 390 px.

@@ -4,7 +4,7 @@ import { validateBooking, type BookingErrors } from "../lib/validate";
 
 type Status = "idle" | "sending" | "done" | "failed";
 
-export function BookingForm({ slotId }: { slotId: string | null }) {
+export function BookingForm({ slotId, summary }: { slotId: string | null; summary?: string }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [note, setNote] = useState("");
@@ -35,6 +35,7 @@ export function BookingForm({ slotId }: { slotId: string | null }) {
     return (
       <div className="form form--done" role="status">
         <h2>You are booked in</h2>
+        {summary && <p className="form__summary">{summary}</p>}
         <p>We sent a confirmation to {email.trim()}.</p>
       </div>
     );

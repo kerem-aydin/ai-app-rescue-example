@@ -6,6 +6,12 @@ import { BookingForm } from "./components/BookingForm";
 
 type Load = { state: "loading" } | { state: "error"; message: string } | { state: "ready"; slots: Slot[] };
 
+function summaryFor(load: Load, id: string | null) {
+  if (load.state !== "ready" || !id) return undefined;
+  const s = load.slots.find((x) => x.id === id);
+  return s ? `${s.service} · ${s.day}, ${s.time}` : undefined;
+}
+
 export default function App() {
   const [load, setLoad] = useState<Load>({ state: "loading" });
   const [selected, setSelected] = useState<string | null>(null);
@@ -63,7 +69,7 @@ export default function App() {
           </div>
         )}
 
-        <BookingForm slotId={selected} />
+        <BookingForm slotId={selected} summary={summaryFor(load, selected)} />
       </main>
     </div>
   );
