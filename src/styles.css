@@ -1,0 +1,19 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, sans-serif; background: #f6f5f2; color: #1d1d1f; }
+.page { width: 1180px; margin: 0 auto; padding: 32px 40px 80px; }
+.top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 48px; }
+.logo { font-weight: 800; font-size: 22px; }
+.nav { display: flex; gap: 32px; white-space: nowrap; }
+.nav a { color: #555; }
+h1 { font-size: 56px; margin: 0 0 8px; white-space: nowrap; }
+.lead { color: #666; margin: 0 0 32px; }
+.grid { display: grid; grid-template-columns: repeat(3, 360px); gap: 20px; margin-bottom: 40px; }
+.slot { display: flex; flex-direction: column; gap: 4px; text-align: left; padding: 20px; border: 1px solid #ddd; border-radius: 12px; background: #fff; cursor: pointer; }
+.slot--on { border-color: #1d1d1f; }
+.slot__time { font-size: 28px; font-weight: 700; }
+.slot__day, .slot__left { color: #888; font-size: 13px; }
+.form { background: #fff; padding: 28px; border-radius: 12px; border: 1px solid #ddd; }
+.form__row { display: flex; gap: 16px; margin-bottom: 16px; }
+.form__row input { width: 420px; padding: 12px; border: 1px solid #ccc; border-radius: 8px; }
+textarea { width: 100%; height: 90px; padding: 12px; border: 1px solid #ccc; border-radius: 8px; margin-bottom: 16px; }
+.cta { background: #c9c9c9; color: #fff; border: 0; padding: 14px 28px; border-radius: 8px; font-size: 16px; }

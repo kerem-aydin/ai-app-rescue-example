@@ -1,0 +1,8 @@
+[
+  { "id": "s1", "day": "Mon 3 Nov", "time": "09:00", "service": "Haircut", "minutes": 45, "price": 38, "left": 2 },
+  { "id": "s2", "day": "Mon 3 Nov", "time": "11:30", "service": "Colour", "minutes": 90, "price": 95, "left": 1 },
+  { "id": "s3", "day": "Tue 4 Nov", "time": "10:00", "service": "Haircut", "minutes": 45, "price": 38, "left": 3 },
+  { "id": "s4", "day": "Tue 4 Nov", "time": "14:15", "service": "Beard trim", "minutes": 20, "price": 18, "left": 4 },
+  { "id": "s5", "day": "Wed 5 Nov", "time": "16:00", "service": "Colour", "minutes": 90, "price": 95, "left": 0 },
+  { "id": "s6", "day": "Thu 6 Nov", "time": "12:30", "service": "Haircut", "minutes": 45, "price": 38, "left": 2 }
+]
