@@ -1,11 +1,11 @@
 # Change report: Slotwise booking app
 
-*Example project. This is a sample rescue made to show how delivery looks; Slotwise is not a real client.*
+*Case study on a sample app. Slotwise is a fictional product, built to show the process end to end.*
 
 **Received:** a React + Vite + TypeScript booking app built quickly with an AI coding tool. It looked fine in the
 preview, but the production build failed and real users would have hit several problems.
 
-**Delivered:** git tag `before` (as received) and git tag `after` (fixed). Every number below comes from a real run
+**Versions:** git tag `before` (as received) and git tag `after` (fixed). Every number below comes from a real run
 saved in `evidence/before/` and `evidence/after/`.
 
 ## Summary

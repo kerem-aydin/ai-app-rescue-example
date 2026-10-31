@@ -1,6 +1,6 @@
 # Slotwise: rescuing an AI-built booking app (example)
 
-*Example project. A sample rescue made to show how a delivery looks; Slotwise is not a real client.*
+*Case study on a sample app. Slotwise is a fictional product, built to show the process end to end.*
 
 A React + Vite + TypeScript booking app, built quickly with an AI coding tool. It looked fine in the preview,
 but the production build failed, a secret key shipped to every visitor, and the phone layout scrolled sideways.
