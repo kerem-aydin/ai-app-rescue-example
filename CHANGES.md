@@ -6,7 +6,7 @@
 preview, but the production build failed and real users would have hit several problems.
 
 **Delivered:** git tag `before` (as received) and git tag `after` (fixed). Every number below comes from a real run
-saved in `kanit/before/` and `kanit/after/`.
+saved in `evidence/before/` and `evidence/after/`.
 
 ## Summary
 
@@ -62,10 +62,10 @@ Run them with `npm test`. `npm run build` now runs the type check, the build and
 
 ## How it was checked
 
-- `npm run build` and `npm test` outputs: `kanit/*/build.txt`, `kanit/*/test.txt`
-- Secret scan: `kanit/*/secret-scan.txt` (the before bundle was built with the type check skipped, only to measure it)
-- Browser checks (phone overflow, empty form, failed load) in headless Chrome: `kanit/*/olcum.json` + screenshots
-- Lighthouse 12.8.2, mobile, one run each against `vite preview` on this machine: `kanit/*/lighthouse.json`.
+- `npm run build` and `npm test` outputs: `evidence/*/build.txt`, `evidence/*/test.txt`
+- Secret scan: `evidence/*/secret-scan.txt` (the before bundle was built with the type check skipped, only to measure it)
+- Browser checks (phone overflow, empty form, failed load) in headless Chrome: `evidence/*/olcum.json` + screenshots
+- Lighthouse 12.8.2, mobile, one run each against `vite preview` on this machine: `evidence/*/lighthouse.json`.
   Scores on your real hosting will differ a little.
 
 ## Not done in this example
