@@ -2,5 +2,5 @@ npm error Missing script: "test"
 npm error
 npm error To see a list of scripts, run:
 npm error   npm run
-npm error A complete log of this run can be found in: C:\Users\kerem\AppData\Local\npm-cache\_logs\2026-10-30T16_03_29_134Z-debug-0.log
+npm error A complete log of this run can be found in: <npm-cache>/_logs/2026-10-30T16_03_29_134Z-debug-0.log
 exit code: 1

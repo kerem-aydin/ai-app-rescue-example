@@ -3,7 +3,7 @@
 > vitest run
 
 
- RUN  v2.1.9 C:/Users/kerem/Desktop/claude_code/Projeler/fiverr-ilanlar/ornek/app-rescue
+ RUN  v2.1.9 <repo>
 
  ✓ api/book.test.ts (4 tests) 12ms
  ✓ src/lib/validate.test.ts (4 tests) 3ms
